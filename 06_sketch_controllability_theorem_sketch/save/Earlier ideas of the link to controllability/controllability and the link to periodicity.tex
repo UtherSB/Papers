@@ -1,0 +1,60 @@
+\include{header}
+
+\begin{document}
+\title{Controllability of a system evolving under the symplectic group $Sp(2n,\mathbb{R})$}
+\maketitle
+
+One can recast the evolution of a system evolving under the action of a quadratic Hamiltonian with $2n$ continuous degrees of freedom in the symplectic representation:
+
+\begin{equation}
+\d{S}{t} = A(t)S \quad S(0) = \mathbbm{1}.
+\end{equation}
+
+The $A(t)$ are determined by the control functions. By manipulating the control functions let's assume we can obtain a set
+
+\begin{equation}
+\mathcal{E} = \{ \tilde{A}_1, \ldots, \tilde{A}_m\}
+\end{equation}
+of linearly independent generators of a Lie algebra $\mathcal{L}$, where $\mathcal{G} = e^{\mathcal{L}}$. As a result, any $K \in \mathcal{G}$ can be written
+\begin{equation}
+K = e^{\tilde{A}_1t_1}e^{\tilde{A}_2t_2}\ldots e^{\tilde{A}_mt_m} \quad \text{with } \tilde{A}_j \in \mathcal{E} \text{ and } t_j  \in \mathbb{R}
+\end{equation}
+
+If the group $G$ is compact then for $t < 0$ there exists a sequence of positive times $t_k >0$ such that 
+\begin{equation}
+\lim_{k \to \infty} e^{\tilde{A}t_k} = e^{\tilde{A}t}
+\end{equation}
+Hence we can generate any element of $\mathcal{G}$ using only positive times and we call the system controllable.
+
+\textbf{The above is directly taken from the 2012 Dynamical recurrence paper. Do you mean $\lim_{t_k \to \infty}$? Otherwise $\lim_{k \to \infty} t_k$ where the sequence converges is just some finite time and the system is exactly periodic.} \\
+
+If $\mathcal{G}$ is noncompact then we look for a condition on $\tilde{A}$ such that for $t_1 > 0$ there exists a $t_2 > 0$ such that 
+\begin{equation}
+e^{\tilde{A}(-t_1)} = e^{\tilde{A}t_2}
+\end{equation}
+which would act as an extra `compact-like' condition on our generators so that we are able to claim that the group is controllable.
+
+This is equivalent to a periodicity condition on $\tilde{A}$ as:
+\begin{equation}
+\begin{aligned}
+&e^{\tilde{A}(-t_1)} = e^{\tilde{A}t_2} \\
+\implies &e^{\tilde{A}(t_1+t_2)} = \mathbbm{1} \\
+\implies &e^{\tilde{A}2(t_1+t_2)} = \mathbbm{1}
+\end{aligned}
+\end{equation}
+So $e^{\tilde{A}t}$ has period of $T = t_1 + t_2$ in this case.
+
+For the constant matrix $\tilde{A}$, periodicity is equivalent to it having pure imaginary eigenvalues and being diagonalisable. (as shown in the other pdf).
+
+\section{Almost periodicity}
+The statement that one only requires almost periodicity is equivalent to one only needing a transformation arbitrarily close to the symplectic transformation required.
+
+For $g'$ in the set of all possibly reachable transformations with positive time and $g \in Sp(2n,\mathbb{R})$ we require
+\begin{equation}
+\exists g' \text{ such that } ||g' - g|| < \epsilon
+\end{equation}
+for any given $\epsilon$ (presumably set by the experimenter).
+
+This sounds fine as a definition of controllability but is certainly broader than that defined by d'Alessandro and the Lie Algebra Rank Criterion.
+
+\end{document}

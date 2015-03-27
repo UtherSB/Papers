@@ -1,0 +1,352 @@
+\include{header}
+\DeclareMathOperator{\Real}{Re}
+\usepackage{tikz}
+\usetikzlibrary{fit,matrix}
+
+\begin{document}
+\title{Conditions on the Hamiltonian for periodic symplectic transformations}
+\maketitle
+
+\section{Notation}\label{sec:notation}
+\begin{equation}
+\Omega = \bigoplus_{i=1}^n \omega \quad  \text{where} \quad \omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+\end{equation}
+
+We consider the Hamiltonian for a system $\hat{H} = \frac{1}{2}z^T H z$ where
+\begin{equation} z = (\hat{x}_1, \hat{p_1}, \ldots, \hat{x}_n, \hat{p}_n)^T. \end{equation}
+and where
+\begin{equation} [\hat{x}_i,\hat{p}_j] = i\Omega_{ij}. \end{equation}
+
+The corresponding evolution equation can be shown to be
+\begin{equation} \dot{z} = Az \end{equation} where $A \in sp(2n,\mathbb{R})$ and $A = \Omega H$.\\
+
+Later we will have the case of a diagonal $2n \times 2n$ matrix. Each of the $n$, $2 \times 2$ subblocks starting from the first and working down in jumps of two will be called `2-blocks' as shown by the boxed submatrices of matrix M:
+
+\begin{equation*}
+  M=
+  \tikz[baseline=(M.west)]{%
+    \node[matrix of math nodes,matrix anchor=west,left delimiter=(,right delimiter=),ampersand replacement=\&] (M) {%
+      a \& b \& 0 \& 0 \& \cdots \\
+      c \& d \& 0 \& 0 \& \cdots \\
+      0 \& 0 \& f \& g \& \cdots \\
+      0 \& 0 \& h \& i \& \cdots \\
+      \vdots \& \vdots \& \vdots \& \vdots \& \ddots \\
+    };
+    \node[draw,fit=(M-1-1)(M-2-2),inner sep=-1pt] {};
+    \node[draw,fit=(M-3-3)(M-4-4),inner sep=-1pt] {};
+  }
+\end{equation*}
+
+
+
+
+
+%T%H%E%O%R%E%M%S%
+
+\section{Theorem - Periodicity's link to A}
+% Eigenvalues of a log matrix.
+\begin{lemma} The eigenvalues of the logarithm of a matrix are the logarithms of the eigenvalues of the original matrix. \label{lem:eigenlog} \end{lemma} 
+\begin{proof}
+Sugggested in Yakubovich. I would like to get a proper verification of this. SORT OUT.
+\end{proof}
+
+% A diag iff eA diag.
+\begin{lemma} A matrix, M, is diagonalisable iff $e^M$ is diagonalisable. \label{lem:eadiag} \end{lemma} 
+\begin{proof}
+Stated on internet - (see saved forum chat in favourite bar.)
+\end{proof}
+
+% Theorem 1
+\begin{theorem} Periodicity is equivalent to A being pure imaginary and diagonalsable. \label{lem:periodicity} \end{theorem}
+\begin{proof}
+Periodicity is equivalent to the fact that $\exists$ T such that:
+\begin{equation}
+e^{A(t+T)}=e^{At} \implies e^{AT}=\mathbb{I}
+\end{equation}
+\begin{itemize}
+\item This implies that the eigenvalues of A must be pure imaginary or zero by lemma (\ref{lem:eigenlog}). 
+\item The identity matrix is diagonal and therefore A must be diagonalisable by lemma (\ref{lem:eadiag}).
+\end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%% BREAK IN THEOREMS %%%%%%%%%%%%%%%%%%%%
+
+\section{Theorem - A's link to H}
+% Positive negative eigenvalues.
+\begin{lemma} The characteristic polynomial of a real Hamiltonian matrix is an even polynomial. Thus, if $\lambda$ is an eigenvalue of a Hamiltonian matrix, then so are $-\lambda, \bar{\lambda}, -\bar{\lambda}$. \label{lem:hamevalues} \end{lemma}
+\begin{proof}
+See p45 Meyer. 
+\end{proof}
+
+% Symplectic A diagonalisation.
+\begin{lemma} A is diagonalisable, or at least block diagonalisable by a symplectic transformation.
+\end{lemma}
+\begin{proof}
+NEED TO SORT THIS OUT.
+\end{proof}
+
+% A 2x2 to real form.
+\begin{lemma} Let A be a real $2 \times 2$ Hamiltonian matrix with eigenvalues $\pm \beta i$, $\beta \neq 0$. There exists a real $2 \times 2$ symplectic matrix $S$ such that
+\begin{equation}
+S^{-1}AS = \begin{pmatrix} 0 & \beta \\ -\beta & 0 \end{pmatrix} \quad \text{or} \quad S^{-1}AS = \begin{pmatrix} 0 & -\beta \\ \beta & 0 \end{pmatrix}
+\end{equation}
+\label{lem:reala} \end{lemma}
+\begin{proof}
+see Meyer p60 2nd ed.
+\end{proof}
+
+% A to H
+\begin{lemma}Consider the $2 \times 2$ matrix $A$ such that $A=\Omega H$, the eigenvalues of $A$ are $\pm i \beta$ and $H$ is real and symmetric. This implies that the eigenvalues of $H$ are positive or negative definite. \label{lem:atoh}
+\end{lemma}
+\begin{proof}
+\begin{equation}
+H = \begin{pmatrix} a & b \\ c & d \end{pmatrix} \implies A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} c & d \\ -a & -b \end{pmatrix}
+\end{equation}
+so we know that
+\begin{equation}
+-bc+ad = \beta^2 \quad and \quad c-b=0
+\end{equation}
+using the two eigenvalue identities given in the proof above. One can check that these conditions are consistent and imply that the eigenvalues of $A$ are $\pm i \beta$.
+
+Now write the characteristic equation for $H$:
+\begin{equation}
+\begin{aligned}
+(a-\lambda)(d-\lambda) - bc &= \lambda^2-(a+d)\lambda +ad - bc = \lambda^2 - (a+d)\lambda + \beta^2, \\
+\lambda &= \frac{1}{2}\left(a+d \pm \sqrt{(a+d)^2-4\beta^2}\right).
+\end{aligned}
+\end{equation}
+We know that $(a+d)^2 \geq 4\beta^2$ because the eigenvalues must be real.
+
+We also know that
+\begin{equation}
+| \sqrt{(a+d)^2 - 4\beta^2} | < |(a+d)|
+\end{equation}
+remembering that $a$ and $d$ may be negative.
+
+As a result the only two options are that $H$ is positive or negative definite.
+\end{proof}
+
+% Not A, not definite H.
+\begin{lemma}
+Consider the $2 \times 2$ matrix $A$ such that $A=\Omega H$, the eigenvalues of $A$ are $\pm \beta$, $\beta > 0$ and $H$ is real and symmetric. This implies that the eigenvalues of $H$ are not definite. \label{lem:hnotdefinite}
+\end{lemma}
+\begin{proof}
+\begin{equation}
+H = -\begin{pmatrix}0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} -c & -d \\ a & b \end{pmatrix}
+\end{equation}
+such that 
+\begin{equation}
+ad - cb = -\mu^2 \quad \text{and} \quad a + d = 0 \quad \text{such that } \mu \in \mathbb{R}^+
+\end{equation} 
+The characteristic equation of $H$ is
+\begin{equation}
+\begin{aligned}
+(-\lambda - c)(-\lambda + b) + ad &= \lambda^2 + (c - b)\lambda - bc + ad = 0. \\
+& = \lambda^2 + (c-b)\lambda - \mu^2 = 0
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+\lambda &= \frac{1}{2}(-(c-b) \pm \sqrt{(c-b)^2 + 4\mu^2}) \\
+\lambda &= \frac{1}{2}((b-c) \pm \sqrt{(b-c)^2 + 4\mu^2}).
+\end{aligned}
+\end{equation}
+\begin{equation}
+\sqrt{(b-c)^2 + 4\mu^2} > b-c
+\end{equation}
+and hence this matrix is not definite.
+\end{proof}
+
+% 2n2n
+\begin{lemma}Let $A$ be a $2n \times 2n$ Hamiltonian matrix with distinct eigenvalues 
+\begin{equation} \lambda_1, \ldots \lambda_n, -\lambda_1, \ldots  -\lambda_n; \end{equation} then there exists a symplectic matrix $S$ (possibly complex) such that 
+\begin{equation}
+S^{-1}AS = diag(\lambda_1, \ldots, \lambda_n,-\lambda_1, \ldots -\lambda_n).
+\end{equation}
+\label{lem:2n2n}
+\end{lemma} 
+\begin{proof}
+See p46 of Meyer.
+\end{proof}
+
+% Thereom 2
+\begin{theorem}$A$ is pure imaginary and diagonalisable iff $H$ is $2\times2$ block diagonalisable and positive definite, negative definite, or 0 on its 2-blocks.
+\end{theorem}
+\begin{proof}
+\textbf{Pure imaginary implies:} \\
+A is Hamiltonian so lemma (\ref{lem:hamevalues}) ensures that these pure imaginary eigenvalues occur in $\pm$ pairs. This also applies to the $0$ eigenvalues to keep the matrix even dimensional.
+
+Enact two linear symplectic transformations. First we diagonalise A, which is possible by lemma (?????) IS THIS LINEAR AND SYMPLECTIC?, into its $\pm$ pairs and then put it into one of the real forms from lemma (\ref{lem:reala}).
+
+Lemma (\ref{lem:atoh}) implies that the corresponding Hamiltonian is positive definite, negative definite, or 0 on each of its 2-blocks.\\
+
+\textbf{Now it remains to show that if A is not pure imaginary then $H$ is not positive definite, negative definite or 0 on its 2-blocks.}
+
+\begin{enumerate}
+\item \textit{A is diagonalisable but not pure imaginary.} In its diagonal form each of the 2-blocks of A must be symplectic and so they cannot be truly complex by lemma (\ref{lem:hamevalues}), therefore they must be real (and we assume non zero). If they are real then eigenvalues of the H 2-blocks are not definite by lemma (\ref{lem:hnotdefinite}.
+\item \textit{A is pure imaginary but not diagonalisable.} H is $2 \times 2$ block diagonalisable, therefore so is $A$. Therefore the eigenvalues of the 2-blocks of A are $\pm i\beta$ for some $\beta \in \mathbb{R}$. This implies that the 2-blocks are diagonalisable by lemma (\ref{lem:2n2n}). This is a contradiction.
+\item \textit{A is not pure imaginary and not diagonalisable.} H is $2 \times 2$ block diagonalisable, therefore so is $A$. Therefore the eigenvalues of the 2-blocks of A are $\pm \beta$ for some $\beta \in \mathbb{R}$. This implies that the 2-blocks are diagonalisable by lemma (\ref{lem:2n2n}). This is a contradiction.
+\end{enumerate}
+
+Proving that X implies Y and `not X' implies `not Y' proves that X $\iff$ Y.
+\end{proof}
+
+\section{Notes}
+H is not, in general 2block diagable.
+
+\section{A different method}
+\begin{equation}
+A = JH
+\end{equation}
+A is Hamiltonian therefore completely reducible. The subblocks are Hamiltonian and so
+\begin{equation}
+A = \bigoplus_{j=1}^s A_j \quad \text{where } A_j = JH_j
+\end{equation}
+
+
+$H_j$ is Hamiltonian so there exists $S \in Sp(2n,\mathbb{R} \text{ or } \mathbb{C}?)$ such that 
+\begin{equation}
+S^TH_jS = D_{H_j}
+\end{equation}
+where $D_{H_j}$ is real and diagonal. So
+\begin{equation}
+S^{-1}A_jS = A_j' = S^{-1}JH_jS = JS^TH_jS = JD_{H_j}
+\end{equation}
+By lemma (on desktop) $A_j'$ is still Hamiltonian.
+\begin{equation}
+D_{H_j} = -JA_j' = -\begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix}\begin{pmatrix}a & b \\ c & d \end{pmatrix} = \begin{pmatrix} -c & -d \\ a & b \end{pmatrix}
+\end{equation}
+where $a, b, c, d$ are $n_j \times n_j$ matrices, where $2n_j = \text{dim}\mathbb{V}_j$. Therefore $a = 0$, $d = 0$ and $b$ and $c$ are both real and diagonal. Therefore
+\begin{equation}
+A_j' = \begin{pmatrix} 0 & b \\ c & 0 \end{pmatrix}
+\end{equation}
+where $b$ and $c$ are diagonal matrices. The elements of $b$ and $-c$ are the diagonal elements of $D_{H_j}$.\\
+
+\textbf{No assumptions have been made so far about the properties of $A_j$ other than that it is Hamiltonian}.\\
+In our direct sum decomposition we can ensure that each $A_j$ has only a pair of real, pair of imaginary, or quadruple of truly complex, eigenvalues.
+
+\begin{lemma}
+If $D_{H_j}$ is definite then $A_j'$ is pure imaginary and diagonalisable.
+\end{lemma}
+\begin{proof}
+Proved in Genoni2012. Double check no explicit use of $\Omega$.
+\end{proof}
+\begin{proposition}
+If $A_j'$ has eigenvalues $\pm i\beta$, $\beta \in \mathbb{R}$, and is diagonalisable then $b$ and $c$ are both definite and in the opposite sense. $b = \text{diag}(\beta,\beta,\ldots)$ and $c = \text{diag}(-\beta,-\beta,\ldots)$.
+\end{proposition}
+\begin{proof}
+Rephrased below.
+\end{proof}
+
+\textbf{Rephrasing everything:}\\
+\begin{equation}
+A = \begin{pmatrix} 0 & B \\ -C & 0 \end{pmatrix}
+\end{equation}
+A is a pure imaginary, diagonalisable, $2n \times 2n$ Hamiltonian matrix with eigenvalues $\pm i\beta$. $B$ and $C$ are both $n \times n$ diagonal matrices. The spectrum of $A$ contains $n$ lots of $+i\beta$ and $n$ lots of $-i\beta$. $\text{det}(A) = \beta^{2n}$.
+\begin{proposition}
+$B = \text{diag}(b, b,\ldots)$ and $C = \text{diag}(c, c, \ldots)$ where $b, c \in \mathbb{R}^+$. $\beta = \sqrt{bc}$. 
+\end{proposition}
+\begin{proof}
+To do.
+\end{proof}
+In this case this would imply that the eigenvalues of $H_j$ were $b$ and $c$.
+
+The other proposition becomes:
+\begin{proposition}
+If $B$ and $C$ are both definite in the same sense then A is purely imaginary. An extension of this down to $B$ and $C$ being made up of 2 values of element because haven't got further with the other one. Although this may not be helpful for this proof.
+\end{proposition}
+
+\subsection{Lemma for the prop}
+To prove above just need:
+\begin{equation} M = \begin{pmatrix} 0 & A \\ B & 0 \end{pmatrix} \end{equation}
+\begin{lemma}
+The eigenvalues of $M$ are $\pm \sqrt{a1b1},\pm \sqrt{a2b2},\ldots$.
+\end{lemma}
+\begin{proof}
+From wiki.
+\begin{equation}
+\text{det}\begin{pmatrix} A & B \\ C & D \end{pmatrix} = \text{det}(AD-BC)
+\end{equation}
+If $CD=DC$ and $A, B, C, D$ are of the same order.
+\end{proof}
+
+
+
+\subsection{Theorem}
+\begin{theorem}
+A is diagonalisable with pure imaginary eigenvalues is equivalent to $H$ being PDNDZ on its submatrices $H_j$, defined above.
+\end{theorem}|
+\end{document}
+
+
+%%%%%%%% END OF DOCUMENT %%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%% unneeded.
+\begin{lemma} Any symplectic matrix A with eigenvalues $\pm i\beta$ can be put in the form... by similarity transform. \label{lem:reala} \end{lemma}
+\begin{proof}
+see Meyer. FILL IN FROM MEYER.
+\end{proof}
+
+%%%%%%%%%% Real and symmetric diagonalisation.
+\begin{lemma} Any real and symmetric matrix is diagonalisable by a similarity transformation, i.e. a change of basis.  \label{lem:realsymm}
+\end{lemma}
+\begin{proof}
+Real symmetric matrices are diagonalizable by orthogonal matrices $O^TO=\mathbb{I}$ via congrunecy (stated from wiki). $O^TMO = O^{-1}MO = D$ where $D$ is diagonal. 
+\end{proof}
+
+\begin{comment}
+\begin{lemma}Let A be a real $2 \times 2$ Hamiltonian matrix with eigenvalues $\pm\beta i$, $\beta \neq 0$. Then there exists a real $2 \times 2$ symplectic matrix $S$ such that:
+\begin{equation}
+S^{-1}AS = \begin{pmatrix} 0 & \beta \\ -\beta & 0 \end{pmatrix} \quad or \quad S^{-1}AS = \begin{pmatrix} 0 & -\beta \\ \beta & 0  \end{pmatrix}
+\end{equation} \label{lem:real22}
+\end{lemma}
+\begin{proof}
+See p47 Meyer.
+\end{proof}
+Possibly not needed.
+\end{comment}
+
+%%%%%%%%%%%%%%%% H to A
+\begin{lemma}Let H be a real $2\times 2$ symmetric matrix with eigenvalues $\mu_1, \, \mu_2 > 0$ or $\mu_1, \, \mu_2 < 0$. This implies that $A=\Omega H$ has pure imaginary eigenvalues. \label{lem:htoa} \end{lemma} 
+\begin{proof}
+\begin{equation}
+H = \begin{pmatrix} a & b \\ b & c \end{pmatrix}
+\end{equation}
+Using two eigenvalue identities,
+\begin{equation}
+\text{det}(M) = \prod_{i=1}^n \lambda_i \quad \text{and} \quad \text{Tr}(M) = \sum_{i=1}^n \lambda_i,
+\end{equation}
+where $M$ is an $n \times n$ matrix, we have
+\begin{equation}
+ac-b^2 = \mu_1\mu_2 \quad and \quad a+c = \mu_1+\mu_2.
+\end{equation}
+Now,
+\begin{equation}
+A = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} \begin{pmatrix} a & b \\ b & c \end{pmatrix} = \begin{pmatrix} b & c \\ -a & -b \end{pmatrix}.
+\end{equation}
+The eigenvalues of A are therefore:
+\begin{equation}
+\lambda = \pm i\sqrt{\mu_1\mu_2}
+\end{equation}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%% A diagonalisable.
+\begin{lemma} $H$ is real and symmetric and in diagonal form. If each of its 2-blocks are positive definite, negative definite or 0 then A is diagonalisable. \label{lem:adiag} \end{lemma}
+\begin{proof}
+Do $A = \Omega H$ so we know that A is block diagonalisable into 2-blocks. We can diagonalise each of these 2-blocks because they fulfil the criteria of lemma (\ref{lem:2n2n}).
+\end{proof}

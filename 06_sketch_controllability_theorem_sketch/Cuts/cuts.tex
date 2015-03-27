@@ -1,0 +1,90 @@
+\begin{lemma}
+Let $\rho : \mathcal{L} \to \mathfrak{gl}(V)$ be a finite dimensional representation of a semisimple Lie algebra $\mathcal{L}$. Then $\rho$ is completely reducible. \cite{Humphreys pg28}
+\end{lemma}
+
+\begin{definition}[Completely reducible]{$V$ is completely reducible if $V$ is a direct sum of irreducible $\mathcal{L}$-modules$. \cite{Humphreys pg25}}
+\end{definition}
+
+\begin{lemma}
+$\mathfrak{sp}(2n,\mathbb{R})$ is a split Lie algebra and so finite representations of it are completely reducible into spaces whose complexification is $\eta(+i\beta_j) \oplus \eta(-i\beta_j)$, the subspaces of the representations of the associated semisimple Lie algebra. \cite{??}.
+\end{lemma}
+
+\begin{equation}
+A = \bigoplus_{j=1}^s A_j \quad \text{where } A_j = JH_j
+\end{equation}
+where $s$ is the number of A-invariant subspaces. DOUBLE CHECK ALL THIS FOR SPLIT ALGEBRAS.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Comment
+\begin{comment}
+\textbf{Rephrasing everything:}\\
+\begin{equation}
+A = \begin{pmatrix} 0 & B \\ -C & 0 \end{pmatrix}
+\end{equation}
+A is a pure imaginary, diagonalisable, $2n \times 2n$ Hamiltonian matrix with eigenvalues $\pm i\beta$. $B$ and $C$ are both $n \times n$ diagonal matrices. The spectrum of $A$ contains $n$ lots of $+i\beta$ and $n$ lots of $-i\beta$. $\text{det}(A) = \beta^{2n}$.
+\begin{proposition}
+$B = \text{diag}(b, b,\ldots)$ and $C = \text{diag}(c, c, \ldots)$ where $b, c \in \mathbb{R}^+$. $\beta = \sqrt{bc}$. 
+\end{proposition}
+\begin{proof}
+To do.
+\end{proof}
+In this case this would imply that the eigenvalues of $H$ were $b$ and $c$.
+
+The other proposition becomes:
+\begin{proposition}
+If $B$ and $C$ are both definite in the same sense then A is purely imaginary. An extension of this down to $B$ and $C$ being made up of 2 values of element because haven't got further with the other one. Although this may not be helpful for this proof.
+\end{proposition}
+
+\subsection{Lemma for the prop}
+To prove above just need:
+\begin{equation} M = \begin{pmatrix} 0 & A \\ B & 0 \end{pmatrix} \end{equation}
+\begin{lemma}
+The eigenvalues of $M$ are $\pm \sqrt{a1b1},\pm \sqrt{a2b2},\ldots$.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+\end{comment}
+
+
+
+
+
+
+
+\begin{lemma}
+$A$ is Hamiltonian implies that $S^(-1)AS = A'$ is Hamiltonian, where $S \in Sp(2n,\mathbb{R} orC)
+\end{lemma}
+\begin{proof}
+See Lin paper on desktop.
+\end{proof}
+
+
+
+
+
+
+
+
+\subsection{H is Diracianly diagonalisable and in SHM form implies that A is pure imaginary and diagonalisable}
+\begin{proposition}
+If sign($D_{H}(i,i)) = sign(D_{H}(i+n,i+n))\; \forall \; i$ then $A'$ is pure imaginary and diagonalisable.
+\end{proposition}
+\begin{proof}
+The diagonal elements of $D_H$ are $\alpha_i$ and $-\tau_i$. The claim is therefore that if $\alpha_i$ and $\tau_i$ have opposite signs then the eigenvalues of $A'$ are pure imaginary. This can be seen in the equation above. 
+
+The matrix $A'$ is diagonalisable because it is of the form where all the columns only have one element.....So all A is diagable?! SORT THIS OUT.
+\end{proof}

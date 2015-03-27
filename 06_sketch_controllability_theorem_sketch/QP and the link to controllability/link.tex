@@ -1,0 +1,38 @@
+\include{header}
+
+\begin{document}
+\title{A statement of the problem of relating quasi-periodicity to controllability.}
+\author{Uther Shackerley-Bennett}
+\maketitle
+
+\section{The statement of the problem}
+For all connected groups there exists a map from $p$ parameters, $\{t_1,\ldots,t_p\}$ to all elements of the group $\mathcal{G}$.
+
+\begin{equation}
+K = e^{A_1t_1}\ldots e^{A_pt_p} \quad \forall \; K \in \mathcal{G}, \forall \; t_i \in \mathbb{R}
+\end{equation}
+where $A_j \in \{A'_1,\ldots,A'_m\}$, the generating set of the associated Lie algebra, $\mathfrak{g}$.
+
+The requirement is that this map can be modified such that all $t_j > 0$ and such that it holds \textbf{arbitrarily} well, rather than exactly.
+
+If $A_j$ has a quasi-periodicity condition then this modification exists because we don't have to worry about restricting the domain i.e. the parameters, $t_1,\ldots,t_p$. The `quasi' part gives us the almost preservation of the map. A periodicity condition would suffice too.
+
+If any of the $A_j$s have a real component in any of their eigenvalues then we have to restrict the domain. The question then is: with this domain restriction, under what conditions is this map surjective on the group manifold.
+
+Obviously if it were always bijective with the full domain access then any domain restriction would ensure that surjectivity did not hold, in which case QP would be equivalent to controllability. I don't think that this map is bijective.
+
+\section{To do}
+\begin{itemize}
+\item To understand this problem we need to understand the nature of the map. This means understanding the nature of the exponential map. 
+\item Remembe that you are dealing with a specific Lie Algebra. Remember that it is split, this could be helpful.
+\item Read some Sussmann, they seem to have many results in this field.
+\end{itemize}
+
+\section{What we know}
+\begin{itemize}
+\item $\mathcal{L}$ is split.
+\item We may have some freedom of linear independence.
+\end{itemize}
+
+
+\end{document}

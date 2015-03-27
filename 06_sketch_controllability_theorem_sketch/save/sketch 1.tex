@@ -1,0 +1,177 @@
+\include{header}
+\DeclareMathOperator{\Real}{Re}
+\usepackage{tikz}
+\usetikzlibrary{fit,matrix}
+
+\begin{document}
+\title{Sufficient condition for controllability on $Sp(2n,\mathbb{R})$}
+\author{Uther Shackerley-Bennett}
+\maketitle
+
+\abstract{A sufficient condition for controllability on $Sp(2n,\mathbb{R})$ is given with the beginnings of an attempt at a necessary condition.}
+
+\tableofcontents
+
+\section{Quasi-periodicity provides a sufficient condition for controllability}
+We consider the Hamiltonian for a system $\hat{H} = \frac{1}{2}z^T H z$ where
+\begin{equation} z = (\hat{x}_1, \hat{x_2}, \ldots, \hat{x_n}, \hat{p}_1, \hat{p_2}, \ldots, \hat{p}_n)^T. \end{equation}
+and where
+\begin{equation} [z	,z^T] = iJ_{ij}, \quad \text{with } J = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}. \end{equation}
+
+One can recast the evolution of a system evolving under the action of a quadratic Hamiltonian with $2n$ continuous degrees of freedom in the symplectic representation:
+\begin{equation} \d{S}{t} = A(t)S \quad S(0) = \mathbbm{1}. \label{eq:dyneqn} \end{equation}
+where $A = JH$.
+
+The $A(t)$ are determined by the control functions. By manipulating the control functions let's assume we can obtain a set,
+\begin{equation}
+\mathcal{E} = \{ \tilde{A}_1, \ldots, \tilde{A}_m\},
+\end{equation}
+of linearly independent generators of a Lie algebra $\mathcal{L}$, where $\mathcal{G} = e^{\mathcal{L}}$. As a result, any $K \in \mathcal{G}$ can be written
+\begin{equation}
+K = e^{\tilde{A}_1t_1}e^{\tilde{A}_2t_2}\ldots e^{\tilde{A}_pt_p} \quad \text{with } \tilde{A}_j \in \mathcal{E} \text{ and } t_j  \in \mathbb{R} \text{ and } j = 1,\ldots,p. \label{eq:groupelement}
+\end{equation}
+
+If the group $\mathcal{G}$ is compact then it is sequentially compact which means that any sequence has a compect subsequence. Hence we can construct a convergent sequence
+\begin{equation}
+e^{At_1},e^{At_2},\ldots
+\end{equation}
+where $t_k > 0 \; \forall \; k$ such that
+\begin{equation}
+\lim_{k \to \infty} e^{At_k} = e^{-A|t|}
+\end{equation}
+for some $t \in \mathbb{R}$.
+
+This means that equation (\ref{eq:groupelement}) can be aribtrarily close to any $K$ for positive times. The effect of this final result is that the reachable set $\mathcal{R}$ (c.f. D'Alessandro) can be shown to be dense in $e^{\mathcal{L}}$. This is then crucial in proving that $\mathcal{R} = e^{\mathcal{L}}$.
+
+The compactness of the group provided the generators with a quasi-periodic property. This property is not restricted to compact groups so we look for this property in the non-compact $Sp(2n,\mathbb{R})$. This property should apply restrictions to the Hamiltonian to give a sufficient condition for controllability on the group.
+
+% A conditions.
+\section{Quasi-periodic trajectories are periodic trajectories on the symplectic group manifold}
+
+\begin{lemma} The characteristic polynomial of a real Hamiltonian matrix is an even polynomial. Thus, if $\lambda$ is an eigenvalue of a Hamiltonian matrix, then so are $-\lambda, \bar{\lambda}, -\bar{\lambda}$. \label{lem:hamevalues} 
+\end{lemma}
+\begin{proof}
+See p45 Meyer. 
+\end{proof}
+
+\begin{lemma} The eigenvalues of the logarithm of a matrix are the logarithms of the eigenvalues of the original matrix. \label{lem:eigenlog} \end{lemma} 
+\begin{proof}
+Sugggested in Yakubovich. I would like to get a proper verification of this. SORT OUT.
+\end{proof}
+
+\begin{lemma} A matrix, M, is diagonalisable iff $e^M$ is diagonalisable. \label{lem:eadiag} \end{lemma} 
+\begin{proof}
+Stated on internet - (see saved forum chat in favourite bar.)
+\end{proof}
+
+\begin{lemma} Periodicity is equivalent to A being pure imaginary and diagonalsable. \label{lem:periodicity} \end{lemma}
+\begin{proof}
+Periodicity is equivalent to the fact that $\exists$ T such that:
+\begin{equation}
+e^{A(t+T)}=e^{At} \implies e^{AT}=\mathbb{I}.
+\end{equation}
+\begin{itemize}
+\item This implies that the eigenvalues of A must be pure imaginary or zero by lemma (\ref{lem:eigenlog}). 
+\item The identity matrix is diagonal and therefore A must be diagonalisable by lemma (\ref{lem:eadiag}).
+\end{itemize}
+\end{proof}
+
+By the Poincar\'{e} Recurrence theorem all bounded trajectories are quasi-periodic and all quasi-periodic trajectories are bounded. Therefore we look for a boundedness condition. 
+
+\begin{proposition}
+All bounded trajectories, $S(t)$, that solve equation (\ref{eq:dyneqn}) with constant $A(t)=A$ are periodic.
+\end{proposition}
+\begin{proof}
+Consider the system
+\begin{equation}
+\dot{w} = Aw.
+\end{equation}
+All solutions of this are bounded if and only if (see \cite{Meyer}, p79)
+\begin{enumerate}
+\item All the eigenvalues of $A$ have non positive real parts.
+\item $A$ is diagonalisable.
+\end{enumerate}
+
+$A$ is Hamiltonian and therefore, by lemma (\ref{lem:hamevalues}) the eigenvalues of $A$ must be pure imaginary. By lemma (\ref{lem:periodicity}) $A$ is periodic.
+\end{proof}
+
+Thus we have conditions on our generators for quasi-periodicity.
+
+% H conditions.
+\section{The quasi-periodicity property of $A$ is equivalent to the system being a set of simple harmonic oscillators}
+A is a $2n \times 2n$ real Hamiltonian matrix. 
+
+\subsection{The effect of the properties of $A$ on the diagonalisability of $H$.}
+\begin{definition}[Physically diagonalisable]
+$A$ is said to be `physically diagonalisable' if it is diagonalisable, and all its eigenvalues are imaginary.
+\end{definition}
+\begin{proof}
+This is a slight alteration of a lemma found on p9 Xiao2009.
+\end{proof}
+
+\begin{lemma}
+A Hamiltonian quadratic in coordinates and momenta is Diracianly diagonalisable if and only if its corresponding $A$ is physically diagonalisable. \label{lem:dirdiag}
+\end{lemma}
+\begin{proof}
+p35 Xiao2009.
+\end{proof}
+
+\subsection{$A$ is pure imaginary and diagonalisable implies that $H$ is in SHM form}
+This seems to already be implied in the Xiao paper but here is an independent proof.
+
+As a result of lemma (\ref{lem:dirdiag}) there exists $S \in Sp(2n,\mathbb{R} \text{ or } \mathbb{C}?)$ FIND THIS OUT such that 
+\begin{equation}
+S^THS = D_{H},
+\end{equation}
+where $D_{H}$ is real and diagonal. So
+\begin{equation}
+S^{-1}AS = A' = S^{-1}JHS = JS^THS = JD_{H};
+\end{equation}
+\begin{equation}
+D_{H} = -JA' = -\begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix}\begin{pmatrix}\Gamma_{11} & \Gamma_{12} \\ \Gamma_{21} & \Gamma_{22} \end{pmatrix} = \begin{pmatrix} -\Gamma_{21} & -\Gamma_{22} \\ \Gamma_{11} & \Gamma_{12} \end{pmatrix}
+\end{equation}
+where $\Gamma_{11}, \Gamma_{12}, \Gamma_{21}, \Gamma_{22}$ are $n \times n$ real matrices matrices. Therefore $\Gamma_{11} = \mathbb{0}$ and $\Gamma_{22} = \mathbb{0}$.  $\Gamma_{12} = \text{diag}(\alpha_1, \alpha_2, \ldots, \alpha_n)$ and $\Gamma_{21} = \text{diag}(\tau_1, \tau_2, \ldots, \tau_n)$. Therefore
+\begin{equation}
+A' = \begin{pmatrix} 0 & \Gamma_{12} \\ \Gamma_{21} & 0. \end{pmatrix}
+\end{equation}
+The elements of $\Gamma_{12}$ and $-\Gamma_{21}$ are the diagonal elements of $D_{H}$.\\
+
+\subsubsection{The eigenvalues of $A$ when $H$ is diagonal}
+\begin{lemma}
+\begin{equation}
+\text{det}\begin{pmatrix} W & X \\ Y & Z \end{pmatrix} = \text{det}(WZ-XY)
+\end{equation}
+if $YZ=ZY$ and $W, X, Y, Z$ are of the same order.
+\label{lem:blockmat}
+\end{lemma}
+\begin{proof}
+see wiki \cite{wiki}.
+\end{proof}
+
+The eigenvalues of $A$ are the solutions of the equation
+\begin{equation}
+\text{det}(A-\lambda I) = \text{det}\begin{pmatrix} -\lambda I_{n} & \Gamma_{12} \\ \Gamma_{21} & -\lambda I_{n} \end{pmatrix}.
+\end{equation}.
+By lemma (\ref{lem:blockmat}) this is the same as 
+\begin{equation}
+\text{det}(\lambda^2 I_{n}-\Gamma_{12}\Gamma_{12}) = \text{det}\begin{pmatrix} 
+\lambda^2 - \alpha_1\tau_1 & 0 & \cdots & 0 \\ 
+0 & \lambda^2 - \alpha_2\tau_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+0 & 0 & 0 & \lambda^2 - \alpha_n\tau_n \\ 
+\end{pmatrix}. \label{eq:eigenvalues}
+\end{equation}
+
+\subsubsection{SHM property of $H$}
+\begin{proposition}
+If $A$ has pure imaginary eigenvalues and is diagonalisable then $sign(\alpha_i) = -sign(\tau_i)$.
+\end{proposition}
+\begin{proof}
+The spectrum and diagonalisability of $A$ and $A'$ are the same so we can consider $A'$.
+
+The only way to solve equation (\ref{eq:eigenvalues}) such that all the eigenvalues are imaginary is for each $\alpha_i$ and $\tau_i$ to have opposite signs.
+\end{proof}
+
+What has been shown is that all Diracianly diagonalisable $H$s are in SHM form. The property that a symplectic Lie aglebra generator is quasi-periodic is equivalent to the corresponding $H$ matrix being symplectically similar to an uncoupled SHM $H$ matrix.
+
+\end{document}
